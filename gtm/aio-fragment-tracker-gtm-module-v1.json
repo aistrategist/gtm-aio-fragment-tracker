@@ -1,0 +1,210 @@
+{
+  "exportFormatVersion": 2,
+  "exportTime": "2025-11-13 17:41:26",
+  "containerVersion": {
+    "path": "",
+    "accountId": "",
+    "containerId": "",
+    "containerVersionId": "0",
+    "container": {
+      "path": "",
+      "accountId": "",
+      "containerId": "",
+      "name": "AIO Fragment Tracker",
+      "publicId": "",
+      "usageContext": [
+        "WEB"
+      ],
+      "fingerprint": "1763055258517",
+      "tagManagerUrl": "",
+      "features": {
+        "supportUserPermissions": true,
+        "supportEnvironments": true,
+        "supportWorkspaces": true,
+        "supportGtagConfigs": false,
+        "supportBuiltInVariables": true,
+        "supportClients": false,
+        "supportFolders": true,
+        "supportTags": true,
+        "supportTemplates": true,
+        "supportTriggers": true,
+        "supportVariables": true,
+        "supportVersions": true,
+        "supportZones": true,
+        "supportTransformations": false
+      },
+      "tagIds": []
+    },
+    "tag": [
+      {
+        "accountId": "",
+        "containerId": "",
+        "tagId": "5",
+        "name": "GA4 – AIO Pageview Helper",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "sendEcommerceData",
+            "value": "false"
+          },
+          {
+            "type": "LIST",
+            "key": "eventSettingsTable",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "page_location"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{cJS – Full URL with Hash}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "aio_fragment"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{cJS – AIO Fragment Flag}}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "aio_pageview"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "measurementIdOverride",
+            "value": "G-XXXXXXX"
+          }
+        ],
+        "fingerprint": "1763055543521",
+        "firingTriggerId": [
+          "2147479553"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "consentSettings": {
+          "consentStatus": "NOT_SET"
+        }
+      },
+      {
+        "accountId": "",
+        "containerId": "",
+        "tagId": "6",
+        "name": "HTML – AIO URL Enhancer",
+        "type": "html",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "html",
+            "value": "<script>\n(function() {\n  var href = window.location.href;\n\n  // Only proceed if this is an AIO/snippet fragment click\n  if (href.indexOf('#:~:text=') === -1) return;\n\n  // Prevent duplicate tagging\n  if (href.indexOf('aio=1') !== -1) return;\n\n  try {\n    // Build new URL with ?aio=1 (or &aio=1)\n    var url = new URL(href);\n    url.searchParams.set('aio', '1');\n\n    // Preserve hash\n    var newHref = url.toString();\n\n    // Replace without reloading the page\n    window.history.replaceState(null, '', newHref);\n\n  } catch(e) {\n    // Fail silently\n  }\n})();\n</script>\n"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "supportDocumentWrite",
+            "value": "false"
+          }
+        ],
+        "fingerprint": "1763055642893",
+        "firingTriggerId": [
+          "2147479553"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "monitoringMetadata": {
+          "type": "MAP"
+        },
+        "consentSettings": {
+          "consentStatus": "NOT_SET"
+        }
+      }
+    ],
+    "variable": [
+      {
+        "accountId": "",
+        "containerId": "",
+        "variableId": "3",
+        "name": "cJS – Full URL with Hash",
+        "type": "jsm",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "javascript",
+            "value": "function() {\n  return document.location.href;\n}\n"
+          }
+        ],
+        "fingerprint": "1763055333333",
+        "formatValue": {}
+      },
+      {
+        "accountId": "",
+        "containerId": "",
+        "variableId": "4",
+        "name": "cJS – AIO Fragment Flag",
+        "type": "jsm",
+        "parameter": [
+          {
+            "type": "TEMPLATE",
+            "key": "javascript",
+            "value": "function() {\n  var href = document.location.href || '';\n  return href.indexOf('#:~:text=') !== -1 ? '1' : '0';\n}\n"
+          }
+        ],
+        "fingerprint": "1763055346596",
+        "formatValue": {}
+      }
+    ],
+    "builtInVariable": [
+      {
+        "accountId": "",
+        "containerId": "",
+        "type": "PAGE_URL",
+        "name": "Page URL"
+      },
+      {
+        "accountId": "",
+        "containerId": "",
+        "type": "PAGE_HOSTNAME",
+        "name": "Page Hostname"
+      },
+      {
+        "accountId": "",
+        "containerId": "",
+        "type": "PAGE_PATH",
+        "name": "Page Path"
+      },
+      {
+        "accountId": "",
+        "containerId": "",
+        "type": "REFERRER",
+        "name": "Referrer"
+      },
+      {
+        "accountId": "",
+        "containerId": "",
+        "type": "EVENT",
+        "name": "Event"
+      }
+    ],
+    "fingerprint": "1763055686003",
+    "tagManagerUrl": ""
+  }
+}
