@@ -1,4 +1,4 @@
-# 🎯 AIO Watchtower — GTM Tracking Module
+# 🎯 AIO Fragment Tracker
 
 ![Status](https://img.shields.io/badge/status-beta-yellow)
 ![GTM](https://img.shields.io/badge/GTM-module-blue)
